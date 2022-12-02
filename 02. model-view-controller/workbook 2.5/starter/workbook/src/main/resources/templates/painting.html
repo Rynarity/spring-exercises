@@ -3,6 +3,27 @@
     <head>
         <title>Painting</title>
     </head>
-    <body>               
+    <body>
+<!--My Attempt-->
+<!--        <div th:switch="${painting}">-->
+<!--            <h1 th:case="starry-night">Starry Night</h1>-->
+<!--            <h1 th:case="mona-lisa">Mona Lisa</h1>-->
+<!--        </div>-->
+<!--        <div th:switch="${painting}">-->
+<!--            <img th:case="starry-night" src="images/starry-night.jpeg" width="300">-->
+<!--            <img th:case="mona-lisa" src="images/mona-lisa.jpeg" width="300">-->
+<!--        </div>-->
+
+<!--Actual Answer-->
+<div th:switch="${painting}">
+    <div th:case="'mona-lisa'">
+        <h1>Mona Lisa</h1>
+        <img src="/images/mona-lisa.jpeg" width="300"/>
+    </div>
+    <div th:case="'starry-night'">
+        <h1>Starry Night</h1>
+        <img src="/images/starry-night.jpeg" width="300"/>
+    </div>
+</div>
     </body>
 </html>

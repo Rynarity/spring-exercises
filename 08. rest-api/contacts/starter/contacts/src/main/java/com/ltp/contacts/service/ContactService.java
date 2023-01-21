@@ -8,4 +8,5 @@ public interface ContactService {
     Contact getContactById(String id);
     void saveContact(Contact contact);
     List<Contact> getContacts();
+    void updateContact(String id, Contact contact);
 }

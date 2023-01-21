@@ -1,5 +1,6 @@
 package com.ltp.contacts.service;
 
+import java.util.List;
 import java.util.stream.IntStream;
 
 import com.ltp.contacts.pojo.Contact;
@@ -17,6 +18,16 @@ public class ContactServiceImpl implements ContactService {
     @Override
     public Contact getContactById(String id) {
         return contactRepository.getContact(findIndexById(id));
+    }
+
+    @Override
+    public void saveContact(Contact contact) {
+        contactRepository.saveContact(contact);
+    }
+
+//    @Override
+    public List<Contact> getContacts() {
+        return contactRepository.getContacts();
     }
 
 

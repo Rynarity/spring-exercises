@@ -38,4 +38,10 @@ public class ContactController {
         contactService.updateContact(id, contact);
         return new ResponseEntity<Contact>(contactService.getContactById(id), HttpStatus.OK);
     }
+
+    @PutMapping("/contactWithoutId/{id}")
+    public ResponseEntity<Contact> updateContactWithoutId(@PathVariable String id, @RequestBody Contact contact) {
+        contactService.updateContactWithoutId(id, contact);
+        return new ResponseEntity<Contact>(contactService.getContactById(id), HttpStatus.OK);
+    }
 }

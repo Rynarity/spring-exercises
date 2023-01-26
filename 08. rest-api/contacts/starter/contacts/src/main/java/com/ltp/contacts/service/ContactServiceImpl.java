@@ -35,6 +35,18 @@ public class ContactServiceImpl implements ContactService {
         contactRepository.updateContact(findIndexById(id), contact);
     }
 
+    // Implementation 1 using index
+//    @Override
+//    public void updateContactWithoutId(String id, Contact contact) {
+//        contactRepository.updateContactWithoutId(findIndexById(id), contact);
+//    }
+
+    // Implementation 1 using ID
+    @Override
+    public void updateContactWithoutId(String id, Contact contact) {
+        contactRepository.updateContactWithoutId(id, contact);
+    }
+
 
     private int findIndexById(String id) {
         return IntStream.range(0, contactRepository.getContacts().size())

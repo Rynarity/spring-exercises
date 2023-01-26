@@ -9,4 +9,5 @@ public interface ContactService {
     void saveContact(Contact contact);
     List<Contact> getContacts();
     void updateContact(String id, Contact contact);
+    void updateContactWithoutId(String id, Contact contact);
 }

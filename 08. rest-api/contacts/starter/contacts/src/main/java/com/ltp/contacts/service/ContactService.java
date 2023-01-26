@@ -10,4 +10,5 @@ public interface ContactService {
     List<Contact> getContacts();
     void updateContact(String id, Contact contact);
     void updateContactWithoutId(String id, Contact contact);
+    void deleteContact(String id);
 }

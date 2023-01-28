@@ -51,6 +51,4 @@ public class ContactController {
         contactService.deleteContact(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
-
 }

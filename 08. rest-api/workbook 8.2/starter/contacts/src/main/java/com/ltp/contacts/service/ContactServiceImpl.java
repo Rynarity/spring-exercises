@@ -1,8 +1,11 @@
 package com.ltp.contacts.service;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import com.ltp.contacts.exception.ContactDeleteFailedException;
+import com.ltp.contacts.exception.ContactNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,7 +35,13 @@ public class ContactServiceImpl implements ContactService {
 
     @Override
     public void deleteContact(String id) {
-        contactRepository.deleteContact(findIndexById(id)); 
+        contactRepository.deleteContact(findIndexById(id));
+//          
+//        try {
+//            contactRepository.deleteContact(1);
+//        } catch (RuntimeException e) {
+//            throw new ContactDeleteFailedException(id);
+//        }
     }
 
     @Override
@@ -45,7 +54,7 @@ public class ContactServiceImpl implements ContactService {
         return IntStream.range(0, contactRepository.getContacts().size())
             .filter(index -> contactRepository.getContacts().get(index).getId().equals(id))
             .findFirst()
-            .orElseThrow();
+            .orElseThrow(() -> new ContactNotFoundException(id));
     }
 
 }

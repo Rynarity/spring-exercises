@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/student")
@@ -20,4 +22,13 @@ public class StudentController {
         return new ResponseEntity<Student>(student, HttpStatus.CREATED);
     }
 
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<HttpStatus> deleteStudent(@PathVariable Long id) {
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping(value="/all")
+    public ResponseEntity<List<Student>> getStudents() {
+        return new ResponseEntity<List<Student>>(HttpStatus.OK);
+    }
 }

@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ltp.gradesubmission.entity.Student;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/student")
 public class StudentController {

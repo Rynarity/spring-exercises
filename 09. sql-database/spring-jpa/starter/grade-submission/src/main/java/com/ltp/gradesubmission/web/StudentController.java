@@ -1,5 +1,7 @@
 package com.ltp.gradesubmission.web;
 
+import com.ltp.gradesubmission.service.StudentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,6 +20,8 @@ import java.util.List;
 @RequestMapping("/student")
 public class StudentController {
 
+    @Autowired
+    StudentService studentService;
     
     @GetMapping("/{id}")
     public ResponseEntity<Student> getStudent(@PathVariable Long id) {
@@ -26,7 +30,8 @@ public class StudentController {
 
     @PostMapping
     public ResponseEntity<Student> saveStudent(@RequestBody Student student) {
-        return new ResponseEntity<>(student, HttpStatus.CREATED);
+        Student createdStudent = studentService.saveStudent(student);
+        return new ResponseEntity<>(createdStudent, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")

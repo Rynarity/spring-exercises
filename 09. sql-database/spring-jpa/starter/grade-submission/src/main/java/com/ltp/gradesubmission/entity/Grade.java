@@ -1,8 +1,16 @@
 package com.ltp.gradesubmission.entity;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "grade")
 public class Grade {
 
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "score", nullable = false)
     private String score;
 
     public Long getId() {

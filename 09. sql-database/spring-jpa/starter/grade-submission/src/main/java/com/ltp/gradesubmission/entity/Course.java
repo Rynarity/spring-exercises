@@ -1,11 +1,33 @@
 package com.ltp.gradesubmission.entity;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "course")
 public class Course {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+
+    @Column(name = "subject", nullable = false)
     private String subject;
+
+    @Column(name = "code", nullable = false)
     private String code;
+
+    @Column(name = "description", nullable = false)
     private String description;
+
+    public Course(String subject, String code, String description) {
+        this.subject = subject;
+        this.code = code;
+        this.description = description;
+    }
+
+    public Course() {
+    }
 
     public Long getId() {
         return this.id;

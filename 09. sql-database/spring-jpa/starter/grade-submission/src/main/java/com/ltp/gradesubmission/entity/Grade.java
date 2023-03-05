@@ -18,6 +18,10 @@ public class Grade {
     @JoinColumn(name = "student_id", referencedColumnName = "id")
     private Student student;
 
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "course_id", referencedColumnName = "id")
+    private Course course;
+
 //    @Column(name = "student_name")
 //    private String name;
 
@@ -43,6 +47,14 @@ public class Grade {
 
     public Student getStudent() {
         return this.student;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
 //    public String getName() {

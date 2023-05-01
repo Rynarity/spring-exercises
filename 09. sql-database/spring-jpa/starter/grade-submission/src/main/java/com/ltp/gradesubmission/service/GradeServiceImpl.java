@@ -27,7 +27,6 @@ public class GradeServiceImpl implements GradeService {
     
     @Override
     public Grade getGrade(Long studentId, Long courseId) {
-//        return gradeRepository.findByStudentIdAndCourseId(studentId, courseId);
         Optional<Grade> grade = gradeRepository.findByStudentIdAndCourseId(studentId, courseId);
         if (grade.isPresent()) {
             return grade.get();

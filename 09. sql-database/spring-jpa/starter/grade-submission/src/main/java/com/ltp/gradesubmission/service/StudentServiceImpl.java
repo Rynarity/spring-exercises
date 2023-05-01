@@ -17,7 +17,6 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Student getStudent(Long id) {
-//        return studentRepository.findById(id).get();
         Optional<Student> student = studentRepository.findById(id);
         if (student.isPresent()) {
             return student.get();

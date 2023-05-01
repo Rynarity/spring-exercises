@@ -3,7 +3,9 @@ package com.ltp.gradesubmission.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "grade")
+@Table(name = "grade", uniqueConstraints = {
+        @UniqueConstraint(columnNames =  {"student_id", "course_id"})
+})
 public class Grade {
 
     @Id

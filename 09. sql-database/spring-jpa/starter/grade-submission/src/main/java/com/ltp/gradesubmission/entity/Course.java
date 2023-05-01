@@ -17,7 +17,7 @@ public class Course {
     @Column(name = "subject", nullable = false)
     private String subject;
 
-    @Column(name = "code", nullable = false)
+    @Column(name = "code", nullable = false, unique = true)
     private String code;
 
     @Column(name = "description", nullable = false)

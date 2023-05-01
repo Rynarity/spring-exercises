@@ -1,10 +1,12 @@
 package com.ltp.gradesubmission.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.ltp.gradesubmission.entity.Course;
 import com.ltp.gradesubmission.entity.Grade;
 import com.ltp.gradesubmission.entity.Student;
+import com.ltp.gradesubmission.exception.GradeNotFoundException;
 import com.ltp.gradesubmission.repository.CourseRepository;
 import com.ltp.gradesubmission.repository.GradeRepository;
 import com.ltp.gradesubmission.repository.StudentRepository;
@@ -25,7 +27,12 @@ public class GradeServiceImpl implements GradeService {
     
     @Override
     public Grade getGrade(Long studentId, Long courseId) {
-        return gradeRepository.findByStudentIdAndCourseId(studentId, courseId);
+//        return gradeRepository.findByStudentIdAndCourseId(studentId, courseId);
+        Optional<Grade> grade = gradeRepository.findByStudentIdAndCourseId(studentId, courseId);
+        if (grade.isPresent()) {
+            return grade.get();
+        }
+        throw new GradeNotFoundException(studentId, courseId);
     }
 
     @Override
@@ -40,9 +47,14 @@ public class GradeServiceImpl implements GradeService {
 
     @Override
     public Grade updateGrade(String score, Long studentId, Long courseId) {
-        Grade grade = gradeRepository.findByStudentIdAndCourseId(studentId, courseId);
-        grade.setScore(score);
-        return gradeRepository.save(grade);
+        Optional<Grade> grade = gradeRepository.findByStudentIdAndCourseId(studentId, courseId);
+        if (grade.isPresent()) {
+            Grade unwrappedGrade = grade.get();
+            unwrappedGrade.setScore(score);
+            return gradeRepository.save(unwrappedGrade);
+        }
+        throw new GradeNotFoundException(studentId, courseId);
+
     }
 
     @Override

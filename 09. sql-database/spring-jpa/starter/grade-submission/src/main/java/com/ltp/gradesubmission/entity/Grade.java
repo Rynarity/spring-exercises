@@ -17,15 +17,19 @@ public class Grade {
     private String score;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "student_id", referencedColumnName = "id")
+    @JoinColumns({
+            @JoinColumn(name="student_id", referencedColumnName = "id"),
+            @JoinColumn(name="student_name", referencedColumnName = "name")
+    })
     private Student student;
 
     @ManyToOne(optional = false)
-    @JoinColumn(name = "course_id", referencedColumnName = "id")
+//    @JoinColumn(name = "course_id", referencedColumnName = "id")
+    @JoinColumns({
+            @JoinColumn(name="course_id", referencedColumnName = "id"),
+            @JoinColumn(name="course_name", referencedColumnName = "subject")
+    })
     private Course course;
-
-//    @Column(name = "student_name")
-//    private String name;
 
     public Long getId() {
         return this.id;
@@ -58,12 +62,4 @@ public class Grade {
     public void setCourse(Course course) {
         this.course = course;
     }
-
-//    public String getName() {
-//        return name;
-//    }
-//
-//    public void setName(String name) {
-//        this.name = name;
-//    }
 }
